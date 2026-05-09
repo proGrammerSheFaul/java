@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JAVA</title>
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+:root{--bg:#0b0b1e;--text:#fff}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s}
+
+/* RGB GLOBAL ANIMATION */
+@keyframes rgb{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
+.rgb{animation:rgb 12s linear infinite}
+
+.navbar{background:rgba(0,0,0,.9)}
+.navbar-brand{color:#00ffcc!important;font-weight:700}
+.nav-link{color:#fff!important}
+
+/* HERO */
+.hero{height:100vh;background:url('https://images.unsplash.com/photo-1517430816045-df4b7de01b4e') center/cover no-repeat;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.75)}
+.hero-content{position:relative;z-index:2;height:100%;display:flex;align-items:center;justify-content:center;text-align:center}
+.hero h1{font-size:3.5rem;font-weight:700;background:linear-gradient(90deg,#00ffcc,#fff,#ff00cc);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+
+section{padding:80px 15px}
+.section-title{text-align:center;color:#00ffcc;font-size:2.5rem;margin-bottom:40px}
+
+.glass{background:rgba(255,255,255,.12);backdrop-filter:blur(16px);border-radius:22px;padding:25px;height:100%;transition:.35s}
+.glass:hover{transform:translateY(-8px)}
+
+.pdf-view{width:100%;height:200px;border-radius:15px;border:none}
+.pdf-btn{display:inline-block;margin:6px;padding:8px 18px;border-radius:25px;background:linear-gradient(90deg,#00ffcc,#ff00cc);color:black;text-decoration:none;font-weight:600}
+
+.quiz-option{background:rgba(255,255,255,.25);padding:10px;border-radius:12px;margin:8px 0;cursor:pointer}
+.quiz-option:hover{background:#00ffcc;color:black}
+
+.toggle{position:fixed;right:20px;bottom:20px;z-index:999}
+footer{background:#000;text-align:center;padding:30px}
+
+@media(max-width:768px){.hero h1{font-size:2.2rem}.section-title{font-size:2rem}}
+</style>
+</head>
+<body class="rgb">
+
+<!-- NAV -->
+<nav class="navbar navbar-expand-lg fixed-top">
+<div class="container">
+<a class="navbar-brand" href="#">JAVA</a>
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="#login">Login</a></li>
+<li class="nav-item"><a class="nav-link" href="#pdf">PDF</a></li>
+<li class="nav-item"><a class="nav-link" href="#playground">Playground</a></li>
+<li class="nav-item"><a class="nav-link" href="#quiz">Quiz</a></li>
+<li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="#developer">Developer</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-content container">
+<div>
+<h1>Java Programming Language</h1>
+<p>Learn Java A–Z • Practice • Quiz • Certificate</p>
+</div>
+</div>
+</div>
+
+<!-- LOGIN / REGISTER (FAKE BACKEND) -->
+<section id="login">
+<h2 class="section-title">Login / Register</h2>
+<div class="container glass text-center">
+<input id="nameInput" class="form-control mb-3" placeholder="Enter your name">
+<button class="btn btn-success" onclick="registerUser()">Enter Dashboard</button>
+</div>
+</section>
+
+<!-- ABOUT JAVA -->
+<section>
+<h2 class="section-title">About Java</h2>
+<div class="container glass">
+<p>Java is a platform-independent, object-oriented programming language used in Android, Web, Banking, Cloud, AI, Enterprise software and more. Java follows OOP principles such as Encapsulation, Inheritance, Polymorphism and Abstraction.</p>
+</div>
+</section>
+
+<!-- PDF SECTION -->
+<section id="pdf">
+<h2 class="section-title">Java PDF Library</h2>
+<div class="container">
+<input class="form-control mb-4" placeholder="Search PDF" onkeyup="filterPDF(this.value)">
+<div class="row g-4" id="pdfList">
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Java Notes- 1</h6><iframe class="pdf-view" src="./pdf/Java Notes.pdf"></iframe><a class="pdf-btn" href="./pdf/Java Notes.pdf" download>Download</a><a class="pdf-btn" href="./pdf/Java Notes.pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 2 - The History and Overview of Java</h6><iframe class="pdf-view" src="./pdf/Lecture 2 - The History and Overview of Java (1).pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 2 - The History and Overview of Java (1).pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 2 - The History and Overview of Java (1).pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 3 - Java Basic and Syntax</h6><iframe class="pdf-view" src="./pdf/Lecture 3 - Java Basic and Syntax (1).pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 3 - Java Basic and Syntax (1).pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 3 - Java Basic and Syntax (1).pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 4 - Variables and Data Types</h6><iframe class="pdf-view" src="./pdf/Lecture 4 - Variables and Data Types (1).pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 4 - Variables and Data Types (1).pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 4 - Variables and Data Types (1).pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 5 - Array in Java</h6><iframe class="pdf-view" src="./pdf/Lecture 5 - Array in Java (1).pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 5 - Array in Java (1).pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 5 - Array in Java (1).pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 6_7 - Operators and Control Statements in Java)</h6><iframe class="pdf-view" src="./pdf/Lecture 6_7 - Operators and Control Statements in Java (1).pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 6_7 - Operators and Control Statements in Java (1).pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 6_7 - Operators and Control Statements in Java (1).pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Lecture 8 - Java - Introducing Classes</h6><iframe class="pdf-view" src="./pdf/Lecture 8 - Java - Introducing Classes.pdf"></iframe><a class="pdf-btn" href="./pdf/Lecture 8 - Java - Introducing Classes.pdf" download>Download</a><a class="pdf-btn" href="./pdf/Lecture 8 - Java - Introducing Classes.pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>Practice Problems</h6><iframe class="pdf-view" src="./pdf/Practice Problems.pdf"></iframe><a class="pdf-btn" href="./pdf/Practice Problems.pdf" download>Download</a><a class="pdf-btn" href="./pdf/Practice Problems.pdf" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>CT Question - 01</h6><iframe class="pdf-view" src="./images/Screenshot_1.PNG"></iframe><a class="pdf-btn" href="./images/Screenshot_1.PNG" download>Download</a><a class="pdf-btn" href="./images/Screenshot_1.PNG" target="_blank">Read</a></div></div>
+<div class="col-md-3 col-sm-6 pdf-item"><div class="glass"><h6>CT Question - 02</h6><iframe class="pdf-view" src="./images/Screenshot_3.PNG"></iframe><a class="pdf-btn" href="./images/Screenshot_3.PNG" download>Download</a><a class="pdf-btn" href="./images/Screenshot_3.PNG" target="_blank">Read</a></div></div>
+</div>
+</div>
+</section>
+
+<!-- PLAYGROUND -->
+<section id="playground">
+<h2 class="section-title">Java Code Playground</h2>
+<div class="container glass">
+<textarea class="form-control" rows="7"> public class Hello{
+ public static void main(String[] args){
+ System.out.println("Hello Java");
+ }
+}</textarea>
+<p class="mt-3">Demo editor</p>
+</div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+<h2 class="section-title">Java Quiz</h2>
+<div class="container glass">
+<p id="q"></p>
+<div id="opts"></div>
+<button class="btn btn-success mt-3" onclick="nextQ()">Next</button>
+</div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard">
+<h2 class="section-title">Student Dashboard</h2>
+<div class="container glass">
+<p>Name: <span id="user">Guest</span></p>
+<div class="progress"><div id="bar" class="progress-bar bg-success" style="width:0%">0%</div></div>
+<button class="btn btn-warning mt-3" onclick="generateCertificate()">Generate Certificate</button>
+</div>
+</section>
+
+<!-- CERTIFICATE -->
+<section id="certificate" style="display:none">
+<h2 class="section-title">Certificate</h2>
+<div class="container glass text-center">
+<h3>Certificate of Completion</h3>
+<p>This certifies that <b id="certName"></b></p>
+<p>Certificate ID: <b id="cid"></b></p>
+</div>
+</section>
+
+<!-- DEVELOPER -->
+<section id="developer">
+<h2 class="section-title">Developer</h2>
+<div class="container glass">
+<p>Developed by <b>Md. Shefaul Hasan</b><br>CSE Student | Web Degisn & Developer</p>
+</div>
+</section>
+
+<button class="btn btn-info toggle" onclick="toggleTheme()">🌙 / ☀️</button>
+
+<footer>
+<p>© 2026 JAVA  | SheFaul-1830 </p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* ===== FAKE BACKEND (LOCAL STORAGE DATABASE) ===== */
+const db = JSON.parse(localStorage.getItem('javaDB')) || { users:{}, scores:{} };
+
+function saveDB(){localStorage.setItem('javaDB',JSON.stringify(db));}
+
+function registerUser(){
+ const name=nameInput.value.trim();
+ if(!name)return alert('Enter name');
+ db.users[name]={name};
+ saveDB();
+ localStorage.setItem('currentUser',name);
+ user.innerText=name;
+}
+
+if(localStorage.getItem('currentUser')){
+ user.innerText=localStorage.getItem('currentUser');
+}
+
+function filterPDF(v){document.querySelectorAll('.pdf-item').forEach(p=>p.style.display=p.innerText.toLowerCase().includes(v.toLowerCase())?'block':'none');}
+
+/* QUIZ ENGINE */
+const quiz=[
+{q:'Java is?',o:['OOP','Script','Markup','None'],a:0},
+{q:'JVM stands for?',o:['Java Virtual Machine','Virtual Java','None','Joint'],a:0},
+{q:'Which keyword creates object?',o:['new','make','create','alloc'],a:0},
+{q:'Inheritance provides?',o:['Reusability','Security','Speed','None'],a:0},
+{q:'Which handles error?',o:['Exception','Array','Loop','Class'],a:0},
+{q:'Platform independent?',o:['Java','C','ASM','None'],a:0},
+{q:'OOP supports?',o:['Class','Method','Variable','Package'],a:0},
+{q:'Collection example?',o:['ArrayList','int','char','float'],a:0},
+{q:'Thread class in?',o:['java.lang','java.util','java.io','java.net'],a:0},
+{q:'Inheritance keyword?',o:['extends','implements','super','this'],a:0}
+];
+let i=0,score=0;
+
+function loadQ(){q.innerText=quiz[i].q;opts.innerHTML='';quiz[i].o.forEach((op,idx)=>{let d=document.createElement('div');d.className='quiz-option';d.innerText=op;d.onclick=()=>check(idx);opts.appendChild(d);});}
+function check(idx){if(idx==quiz[i].a){score+=10;updateBar();}}
+function nextQ(){i++;if(i<quiz.length)loadQ();}
+function updateBar(){bar.style.width=score+'%';bar.innerText=score+'%';db.scores[user.innerText]=score;saveDB();}
+
+function generateCertificate(){if(score===100){certName.innerText=user.innerText;cid.innerText='JAVA-'+Math.floor(Math.random()*100000);certificate.style.display='block';}}
+
+function toggleTheme(){document.body.classList.toggle('bg-light');document.body.classList.toggle('text-dark');}
+
+loadQ();
+</script>
+</body>
+</html>
